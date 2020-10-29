@@ -228,6 +228,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "5.7.0"
+  line_chart:
+    dependency: "direct main"
+    description:
+      name: line_chart
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.9"
   liquid_progress_indicator:
     dependency: "direct main"
     description:
@@ -522,4 +529,4 @@ packages:
     version: "2.2.1"
 sdks:
   dart: ">=2.8.0 <3.0.0"
-  flutter: ">=1.12.13+hotfix.5 <2.0.0"
+  flutter: ">=1.17.0 <2.0.0"
