@@ -971,14 +971,14 @@ class _CheckPageState extends State<Dashboard> {
   //       mode: FileMode.append);
   // }
 
-  // Future<File> _writeStringToTextFile(String dataList) async {
-  //   var now = new DateTime.now();
-  //   var dateTimeWrite =
-  //       DateFormat("yyyy-MM-dd HH:mm:ss").format(now).toString();
-  //   final file = await _localFile;
-  //   return file.writeAsString('$dateTimeWrite => $dataList \n',
-  //       mode: FileMode.append);
-  // }
+  Future<File> _writeStringToTextFile(String dataList) async {
+    var now = new DateTime.now();
+    var dateTimeWrite =
+        DateFormat("yyyy-MM-dd HH:mm:ss").format(now).toString();
+    final file = await _localFile;
+    return file.writeAsString('$dateTimeWrite => $dataList \n',
+        mode: FileMode.append);
+  }
 
   checkPortAvail() async {
     List<UsbDevice> devices = await UsbSerial.listDevices();
@@ -5998,7 +5998,7 @@ class _CheckPageState extends State<Dashboard> {
                         ),
                 ),
                 Text(
-                  "v1.8.6h",
+                  "v1.8.6i",
                   style: TextStyle(
                       color: Colors.white,
                       fontSize: _isTab10 ? 18 : 10,
@@ -6249,13 +6249,13 @@ class _CheckPageState extends State<Dashboard> {
 
   _newtreatmentMethod() async {
     var data = await Navigator.push(
-        context,
-        MaterialPageRoute(
-            builder: (context) => NewTreatmentScreen(
-                0,
-                patientId != "" ? patientId.toString() : "",
-                "SWASIT " + globalCounter.toString())),
-      );
+      context,
+      MaterialPageRoute(
+          builder: (context) => NewTreatmentScreen(
+              0,
+              patientId != "" ? patientId.toString() : "",
+              "SWASIT " + globalCounter.toString())),
+    );
     if (data == "1") {
       getData();
     }
@@ -15510,8 +15510,7 @@ class _CheckPageState extends State<Dashboard> {
                                 valueColor: AlwaysStoppedAnimation<Color>(
                                   psvIe ? Color(0xFF213855) : Color(0xFFE0E0E0),
                                 ),
-                                value:
-                                    psvIeValue != null ? psvIeValue / 61 : 0,
+                                value: psvIeValue != null ? psvIeValue / 61 : 0,
                               ),
                             ),
                           )
@@ -27884,19 +27883,12 @@ class _CheckPageState extends State<Dashboard> {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
-          // new Container(
-          //   color: Color(0xFF171e27),
-          //   padding: const EdgeInsets.only(top: 12.0),
-          //   child: new Text('Pressure & Volume',
-          //       style: TextStyle(color: Colors.white)),
-          // ),
-          SafeArea(
-              child: new Container(
-              height:250,width:500,
+         
+           new Container(
+             padding: EdgeInsets.only(left: 20, right: 0, top: 0),
               color: Color(0xFF171e27),
-              child: SafeArea(
-                  child: new Plot(
-                  height: 320.0,
+              child:new Plot(
+                  height: 200.0,
                   data: _plotDataPv,
                   gridSize: new Offset(10.0, 400.0),
                   style: new PlotStyle(
@@ -27921,9 +27913,9 @@ class _CheckPageState extends State<Dashboard> {
                   // xTitle: 'Pressure',
                   // yTitle: 'Volume',
                 ),
-              ),
+              
             ),
-          ),
+          
         ],
       ),
     );
@@ -27935,19 +27927,17 @@ class _CheckPageState extends State<Dashboard> {
       height: 413,
       width: 640,
       child: Column(
+        mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
-          SafeArea(
-              child: new Container(
-              padding: EdgeInsets.only(left: 10, right: 2, top: 20),
-              height:220,width:400,
+          new Container(
+            padding: EdgeInsets.only(left: 20, right: 0, top: 0),
               color: Color(0xFF171e27),
-              child: SafeArea(
-                  child: new Plot(
-                  height: 10.0,
+              child:  Plot(
+                  height: 200.0,
                   data: _plotDataPf,
-                  gridSize: new Offset(200.0, 10.0),
+                  gridSize: new Offset(200.0, 50.0),
                   style: new PlotStyle(
                     axisStrokeWidth: 1.0,
                     pointRadius: 1.0,
@@ -27970,9 +27960,8 @@ class _CheckPageState extends State<Dashboard> {
                   // xTitle: 'Flow',
                   // yTitle: 'Pressure',
                 ),
-              ),
             ),
-          ),
+          
         ],
       ),
     );
@@ -27984,25 +27973,18 @@ class _CheckPageState extends State<Dashboard> {
       height: 413,
       width: 640,
       child: Column(
+        mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
-          // new Container(
-          //   color: Color(0xFF171e27),
-          //   padding: const EdgeInsets.only(top: 12.0),
-          //   child: new Text('Volume & Flow',
-          //       style: TextStyle(color: Colors.white)),
-          // ),
-          SafeArea(
-              child: new Container(
-              padding: EdgeInsets.only(left: 10, right: 2, top: 45),
-              height:250,width:500,
+          
+          new Container(
+              padding: EdgeInsets.only(left: 20, right: 0, top: 0),
               color: Color(0xFF171e27),
-              child: SafeArea(
-                  child: new Plot(
-                  height: 10.0,
+              child:Plot(
+                  height: 200.0,
                   data: _plotDataVf,
-                  gridSize: new Offset(200.0, 200.0),
+                  gridSize: new Offset(500.0, 200.0),
                   style: new PlotStyle(
                     axisStrokeWidth: 1.0,
                     pointRadius: 1.0,
@@ -28025,9 +28007,9 @@ class _CheckPageState extends State<Dashboard> {
                   // xTitle: 'Volume',
                   // yTitle: 'Flow',
                 ),
-              ),
+              
             ),
-          ),
+          
         ],
       ),
     );
@@ -29840,7 +29822,7 @@ class _CheckPageState extends State<Dashboard> {
     }
   }
 
-getTiValueNumber(checkTi) {
+  getTiValueNumber(checkTi) {
     var data = checkTi == "0.5"
         ? 1
         : checkTi == "0.6"
@@ -29885,9 +29867,9 @@ getTiValueNumber(checkTi) {
                                                                                 : checkTi == "2.4" ? 20 : checkTi == "2.5" ? 21 : checkTi == "2.6" ? 22 : checkTi == "2.7" ? 23 : checkTi == "2.8" ? 24 : checkTi == "2.9" ? 25 : checkTi == "3.0" ? 26 : checkTi == "3.1" ? 27 : checkTi == "3.2" ? 28 : checkTi == "3.3" ? 29 : checkTi == "3.4" ? 30 : checkTi == "3.5" ? 31 : checkTi == "3.6" ? 32 : checkTi == "3.7" ? 33 : checkTi == "3.8" ? 34 : checkTi == "3.9" ? 35 : checkTi == "4.0" ? 36 : checkTi == "4.1" ? 37 : checkTi == "4.2" ? 38 : checkTi == "4.3" ? 39 : checkTi == "4.4" ? 40 : checkTi == "4.5" ? 41 : checkTi == "4.6" ? 42 : checkTi == "4.7" ? 43 : checkTi == "4.8" ? 44 : checkTi == "4.9" ? 45 : checkTi == "5.0" ? 46 : "0.5";
 
     return data;
-}
+  }
 
-getTiValue(checkTi) {
+  getTiValue(checkTi) {
     var data = checkTi == 1
         ? "0.5"
         : checkTi == 2
@@ -29931,9 +29913,9 @@ getTiValue(checkTi) {
                                                                                 : checkTi == 20 ? "2.4" : checkTi == 21 ? "2.5" : checkTi == 22 ? "2.6" : checkTi == 23 ? "2.7" : checkTi == 24 ? "2.8" : checkTi == 25 ? "2.9" : checkTi == 26 ? "3.0" : checkTi == 27 ? "3.1" : checkTi == 28 ? "3.2" : checkTi == 29 ? "3.3" : checkTi == 30 ? "3.4" : checkTi == 31 ? "3.5" : checkTi == 32 ? "3.6" : checkTi == 33 ? "3.7" : checkTi == 34 ? "3.8" : checkTi == 35 ? "3.9" : checkTi == 36 ? "4.0" : checkTi == 37 ? "4.1" : checkTi == 38 ? "4.2" : checkTi == 39 ? "4.3" : checkTi == 40 ? "4.4" : checkTi == 41 ? "4.5" : checkTi == 42 ? "4.6" : checkTi == 43 ? "4.7" : checkTi == 44 ? "4.8" : checkTi == 45 ? "4.9" : checkTi == 46 ? "5.0" : "0.5";
 
     return data;
-}
+  }
 
-getIeNumber(String ieDataValue) {
+  getIeNumber(String ieDataValue) {
     var adata = ieDataValue == "4.0:1.0"
         ? 1
         : ieDataValue == "3.9:1.0"
@@ -29979,7 +29961,7 @@ getIeNumber(String ieDataValue) {
                                                                                 ? 19
                                                                                 : ieDataValue == "2.1:1.0" ? 20 : ieDataValue == "2.0:1.0" ? 21 : ieDataValue == "1.9:1.0" ? 22 : ieDataValue == "1.8:1.0" ? 23 : ieDataValue == "1.7:1.0" ? 24 : ieDataValue == "1.6:1.0" ? 25 : ieDataValue == "1.5:1.0" ? 26 : ieDataValue == "1.4:1.0" ? 27 : ieDataValue == "1.3:1.0" ? 28 : ieDataValue == "1.2:1.0" ? 29 : ieDataValue == "1.1:1.0" ? 30 : ieDataValue == "1.0:1.0" ? 31 : ieDataValue == "1.0:1.1" ? 32 : ieDataValue == "1.0:1.2" ? 33 : ieDataValue == "1.0:1.3" ? 34 : ieDataValue == "1.0:1.4" ? 35 : ieDataValue == "1.0:1.5" ? 36 : ieDataValue == "1.0:1.6" ? 37 : ieDataValue == "1.0:1.7" ? 38 : ieDataValue == "1.0:1.8" ? 39 : ieDataValue == "1.0:1.9" ? 40 : ieDataValue == "1.0:2.0" ? 41 : ieDataValue == "1.0:2.1" ? 42 : ieDataValue == "1.0:2.2" ? 43 : ieDataValue == "1.0:2.3" ? 44 : ieDataValue == "1.0:2.4" ? 45 : ieDataValue == "1.0:2.5" ? 46 : ieDataValue == "1.0:2.6" ? 47 : ieDataValue == "1.0:2.7" ? 48 : ieDataValue == "1.0:2.8" ? 49 : ieDataValue == "1.0:2.9" ? 50 : ieDataValue == "1.0:3.0" ? 51 : ieDataValue == "1.0:3.1" ? 52 : ieDataValue == "1.0:3.2" ? 53 : ieDataValue == "1.0:3.3" ? 54 : ieDataValue == "1.0:3.4" ? 55 : ieDataValue == "1.0:3.5" ? 56 : ieDataValue == "1.0:3.6" ? 57 : ieDataValue == "1.0:3.7" ? 58 : ieDataValue == "1.0:3.8" ? 59 : ieDataValue == "1.0:3.9" ? 60 : ieDataValue == "1.0:4.0" ? 61 : 0;
     return adata;
-}
+  }
 
   getIeData(pccmvIeValue, int res) {
     var data = pccmvIeValue == 1
@@ -30023,8 +30005,7 @@ getIeNumber(String ieDataValue) {
                                                                             ? "2.3:1"
                                                                             : pccmvIeValue == 19
                                                                                 ? "2.2:1"
-                                                                                : pccmvIeValue == 20 ? "2.1:1" : pccmvIeValue == 21 ? "2.0:1" : pccmvIeValue == 22 ? "1.9:1" : pccmvIeValue == 23 ? "1.8:1" : pccmvIeValue == 24 ? "1.7:1" : pccmvIeValue == 25 ? "1.6:1" : pccmvIeValue == 26 ? "1.5:1" : pccmvIeValue == 27 ? "1.4:1" : pccmvIeValue == 28 ? "1.3:1" : pccmvIeValue == 29 ? "1.2:1" : pccmvIeValue == 30 ? "1.1:1" : pccmvIeValue == 31 ? "1:1" : pccmvIeValue == 32 ? "1:1.1" : pccmvIeValue == 33 ? "1:1.2" : pccmvIeValue == 34 ? "1:1.3" : pccmvIeValue == 35 ? "1:1.4" : pccmvIeValue == 36 ? "1:1.5" : pccmvIeValue == 37 ? "1:1.6" : pccmvIeValue == 38 ? "1:1.7" : pccmvIeValue == 39 ? "1:1.8" : pccmvIeValue == 40 ? "1:1.9" : pccmvIeValue == 41 ? "1:2.0" : pccmvIeValue == 42 ? "1:2.1" : pccmvIeValue == 43 ? "1:2.2" : pccmvIeValue == 44 ? "1:2.3" : pccmvIeValue == 45 ? "1:2.4" : pccmvIeValue == 46 ? "1:2.5" : pccmvIeValue == 47 ? "1:2.6" : pccmvIeValue == 48 ? "1:2.7" : pccmvIeValue == 49 ? "1:2.8" : pccmvIeValue == 50 ? "1:2.9" : pccmvIeValue == 51 ? "1:3.0" : pccmvIeValue == 52 ? "1:3.1" : pccmvIeValue == 53 ? "1:3.2" : pccmvIeValue == 54 ? "1:3.3" : pccmvIeValue == 55 ? "1:3.4" : pccmvIeValue == 56 ? "1:3.5" : pccmvIeValue == 57 ? "1:3.6" : pccmvIeValue == 58 ? "1:3.7" : pccmvIeValue == 59 ? "1:3.8" : pccmvIeValue == 60 ? "1:3.9" : pccmvIeValue == 61 ? "1:4.0" 
-                                                                                : "0".toString();
+                                                                                : pccmvIeValue == 20 ? "2.1:1" : pccmvIeValue == 21 ? "2.0:1" : pccmvIeValue == 22 ? "1.9:1" : pccmvIeValue == 23 ? "1.8:1" : pccmvIeValue == 24 ? "1.7:1" : pccmvIeValue == 25 ? "1.6:1" : pccmvIeValue == 26 ? "1.5:1" : pccmvIeValue == 27 ? "1.4:1" : pccmvIeValue == 28 ? "1.3:1" : pccmvIeValue == 29 ? "1.2:1" : pccmvIeValue == 30 ? "1.1:1" : pccmvIeValue == 31 ? "1:1" : pccmvIeValue == 32 ? "1:1.1" : pccmvIeValue == 33 ? "1:1.2" : pccmvIeValue == 34 ? "1:1.3" : pccmvIeValue == 35 ? "1:1.4" : pccmvIeValue == 36 ? "1:1.5" : pccmvIeValue == 37 ? "1:1.6" : pccmvIeValue == 38 ? "1:1.7" : pccmvIeValue == 39 ? "1:1.8" : pccmvIeValue == 40 ? "1:1.9" : pccmvIeValue == 41 ? "1:2.0" : pccmvIeValue == 42 ? "1:2.1" : pccmvIeValue == 43 ? "1:2.2" : pccmvIeValue == 44 ? "1:2.3" : pccmvIeValue == 45 ? "1:2.4" : pccmvIeValue == 46 ? "1:2.5" : pccmvIeValue == 47 ? "1:2.6" : pccmvIeValue == 48 ? "1:2.7" : pccmvIeValue == 49 ? "1:2.8" : pccmvIeValue == 50 ? "1:2.9" : pccmvIeValue == 51 ? "1:3.0" : pccmvIeValue == 52 ? "1:3.1" : pccmvIeValue == 53 ? "1:3.2" : pccmvIeValue == 54 ? "1:3.3" : pccmvIeValue == 55 ? "1:3.4" : pccmvIeValue == 56 ? "1:3.5" : pccmvIeValue == 57 ? "1:3.6" : pccmvIeValue == 58 ? "1:3.7" : pccmvIeValue == 59 ? "1:3.8" : pccmvIeValue == 60 ? "1:3.9" : pccmvIeValue == 61 ? "1:4.0" : "0".toString();
 
     var dataI = data.split(":")[0];
     var dataE = data.split(":")[1];
@@ -34183,8 +34164,8 @@ getIeNumber(String ieDataValue) {
           preferences.setBool('inhalationFlag', false);
         }
         // datapv.add(Point(tempPressure, temp1Volume));
-        datapf.add(Point(temp3Flow, tempPressure));
-        datavf.add(Point(temp1Volume, temp3Flow));
+        datapf.add(Point(temp3Flow.round(), tempPressure.round()));
+        datavf.add(Point(temp1Volume.round(), temp3Flow.round()));
         breathCycle = true;
       });
     } else if (fList[3] == 2 &&
@@ -34205,7 +34186,7 @@ getIeNumber(String ieDataValue) {
           if (datapf.length > 16 && datapf.length != 0) {
             _plotDataPf.clear();
             _plotDataPf.addAll(datapf);
-            _plotDataPf.add(datapf[0]);
+            // _plotDataPf.add(datapf[0]);
           } else {
             datapf.clear();
           }
@@ -34214,7 +34195,9 @@ getIeNumber(String ieDataValue) {
           if (datavf.length > 16 && datavf.length != 0) {
             _plotDataVf.clear();
             _plotDataVf.addAll(datavf);
-            _plotDataVf.add(datavf[0]);
+            // _plotDataVf.add(datavf[0]);
+            print("vf graph" + _plotDataVf.toString());
+            _writeStringToTextFile(_plotDataVf.toString());
           } else {
             datavf.clear();
           }
@@ -34225,8 +34208,8 @@ getIeNumber(String ieDataValue) {
           breathCycle = false;
         }
         // datapv.add(Point(tempPressure, temp1Volume));
-        datapf.add(Point(temp3Flow, tempPressure));
-        datavf.add(Point(temp1Volume, temp3Flow));
+        datapf.add(Point(temp3Flow.round(), tempPressure.round()));
+        datavf.add(Point(temp1Volume.round(), temp3Flow.round()));
       });
     }
 
