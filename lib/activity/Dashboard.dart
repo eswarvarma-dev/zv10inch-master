@@ -5998,7 +5998,7 @@ class _CheckPageState extends State<Dashboard> {
                         ),
                 ),
                 Text(
-                  "v1.8.6i",
+                  "v1.8.6j",
                   style: TextStyle(
                       color: Colors.white,
                       fontSize: _isTab10 ? 18 : 10,
@@ -27890,7 +27890,7 @@ class _CheckPageState extends State<Dashboard> {
               child:new Plot(
                   height: 200.0,
                   data: _plotDataPv,
-                  gridSize: new Offset(10.0, 400.0),
+                  gridSize: new Offset(50.0, 400.0),
                   style: new PlotStyle(
                     axisStrokeWidth: 1.0,
                     pointRadius: 1.0,
@@ -34245,7 +34245,7 @@ class _CheckPageState extends State<Dashboard> {
             inhalationFlagP = false;
             preferences.setBool('inhalationFlagP', false);
           }
-          datapv.add(Point(pressurePLotData, volumePlotData));
+          datapv.add(Point(pressurePLotData.round(), volumePlotData.round()));
           breathCycle1 = true;
         });
       } else if (finalList[84] == 2 &&
@@ -34266,7 +34266,7 @@ class _CheckPageState extends State<Dashboard> {
             datapv.clear();
             breathCycle1 = false;
           }
-          datapv.add(Point(pressurePLotData, volumePlotData));
+          datapv.add(Point(pressurePLotData.toInt(), volumePlotData.toInt()));
         });
       }
 
